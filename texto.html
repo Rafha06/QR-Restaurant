@@ -1,0 +1,80 @@
+<p>HOME vai ter como principio apresentar o site e suas funcionalidades,
+    vai falr um pouco sobre tudo e tem que ter um design atravivo e interativo
+   ,algo facil para quem avai comprar
+</p>
+<p>SOBRE deve conter informacoes mais da parte que vai mostrar a empresa
+   que vai nos contratar doque sobre o site em si e tambem deve eplicar as
+   funcionalidades com links e carts sobre o assunto assim como uma area de sugestoes   
+   livre para clientes
+   e para compradpores do projeto que sera enviado para area do ti
+</p>
+<p>MENU vai ter uma imagem de apresentacao sobre a empresa contratada e apos
+   isso nas cores que a empresa escolher tera as opçoes de pratos que elas mesmas vao
+   colocar tanto imagem preco e descricao e essa area tambem tera uma parte de confirmar
+   pagamento que levara a pagina que ira gerar o qr code que vai confirmar tanto o pagamento
+   como o inicio da preparacao do prato em um aparelho para o cozinheiro
+</p>
+<p>LOGIN ADM vai conter o nome, a senha e o cnpj da empresa contratante apos isso esta
+    liberado para o acesso restrito (de sua loja)
+</p>
+<p>MEU PEDIDO CLIENTE essa area devera ter as informaçoes do pedido feito pelo cliente
+   tanto como a imagem descricao nome, o horario em que o pedido foi pago e uma extimativa
+   de quanto estara
+   pronto e tambem com recomendacoees de outros produtos da loja 
+</p>
+<p>ADCIONAR PRODUTO ADM tera uma area onde ele vai poder escolher a imagem nome e descricao do
+   produto tanto como a tabela 
+   nutricional do protudo em si e tambem vai poder ecolher as cores usadas no site todo 
+</p>
+<p>PEDIDOS CLIENTE essa e a parte que vai receber as informacoes da
+   area menu e vai confirmar o pedido 
+</p>
+<p>AREA PRODUTOS ADM essa parte tera uma outra funcionalidade que seria dizer quai pratos
+   nao estao disponiveis no momento que sera atualizada altomaticamente assim como o pedido
+   de cada cliente e nome o numero da mesa que pediu la tera tambem o modo de preparo que sera
+   disponibilizadpo para o coxinheiro e a area de tempo extimado que ele pode colocar ou nao
+   e caso nao coloque tera um tempo padrao para cada prato e tear tambem um status depedido
+   feitoe pedido concluido e tambem sera gerado um grafico ali para os ganhos ja descontado
+   o valor gasto para fazer cada
+   prato e as contas a pagar do restaurante que serao especificadas por ele mesmo 
+</p>
+<p>GRAFICOS vai se tratar de qual produto sai mais, qual produto sai menos,
+   como esta a venda e a quantidade, tambem vai comparar mensalmente o valor gasto total e
+   com o lucro mensal vai ver para onde esta indo o dinheiro e vai fazer tambem a gestao de
+   para onde vai o dinheiro que esta entrando
+</p>
+<p>GESTAO deve conter pedidos de mercadoria assim como
+   o numero do fornecedor nome e a qual produto se refere,
+   numero das notas ja confirmadas e das que estao para chegar
+</p>
+
+
+
+<script>
+   // Função para adicionar prato ao pedido
+   function addToCart(item) {
+       const cart = JSON.parse(localStorage.getItem('cart')) || []; // Recupera o carrinho armazenado no localStorage ou cria um novo
+       const itemName = item.querySelector('h3').innerText;
+       const itemPrice = parseFloat(item.getAttribute('data-price'));
+       
+       // Adiciona o item ao carrinho
+       cart.push({
+           name: itemName,
+           price: itemPrice
+       });
+       
+       // Armazena o carrinho atualizado no localStorage
+       localStorage.setItem('cart', JSON.stringify(cart));
+       
+       alert(`${itemName} foi adicionado ao seu pedido.`);
+   }
+
+   // Adiciona o evento de clique nos botões de adicionar ao pedido
+   const addToCartButtons = document.querySelectorAll('.add-to-cart');
+   addToCartButtons.forEach(button => {
+       button.addEventListener('click', function() {
+           const menuItem = this.closest('.menu-item');
+           addToCart(menuItem);
+       });
+   });
+</script>
