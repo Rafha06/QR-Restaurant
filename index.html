@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Pedido de Restaurante</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background-color: #f0f0f0;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      color: #333;
+    }
+    table {
+      width: 100%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px;
+      border-bottom: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    .total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+    .form-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 1em;
+    }
+    input[type="text"], input[type="number"] {
+      flex: 1;
+    }
+    button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    #tempoPreparoInfo {
+      margin-top: 10px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Restaurante GKODE</h2>
+
+    <div class="form-row">
+      <input type="text" id="nomePrato" placeholder="Nome do prato">
+      <input type="text" id="obsPrato" placeholder="Observações">
+      <input type="number" id="qtdPrato" placeholder="Qtd" min="1" value="1">
+      <input type="number" id="precoPrato" placeholder="Preço" step="0.01" min="0">
+      <button onclick="adicionarPrato()">Adicionar</button>
+    </div>
+
+    <div id="tempoPreparoInfo"></div>
+
+    <table id="tabelaPedido">
+      <thead>
+        <tr>
+          <th>Qtd</th>
+          <th>Prato</th>
+          <th>Observações</th>
+          <th>Preço Unitário</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Linhas serão adicionadas aqui -->
+      </tbody>
+    </table>
+
+    <div class="total" id="resumoPedido">
+      Subtotal: R$ 0,00<br>
+      Taxa de entrega: R$ 5,00<br>
+      <strong>Total Final: R$ 5,00</strong>
+    </div>
+
+    <div class="total" id="tempoTotalPreparo">
+      Tempo estimado de preparo: 0 min
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
